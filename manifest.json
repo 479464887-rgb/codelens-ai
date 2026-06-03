@@ -3,6 +3,8 @@
   "name": "CodeLens AI",
   "version": "1.0.0",
   "description": "AI-powered code review assistant for GitHub Pull Requests. Get instant analysis of code quality, security issues, and best practices.",
+  "homepage_url": "https://479464887-rgb.github.io/codelens-ai/",
+  "author": {"email": "tulv202900@163.com"},
   "permissions": [
     "activeTab",
     "storage",
