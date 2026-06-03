@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CodeLens AI</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      font-size: 13px;
+      color: #24292f;
+      background: #ffffff;
+      width: 320px;
+      padding: 16px;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .header h1 {
+      font-size: 15px;
+      font-weight: 600;
+    }
+    .badge {
+      font-size: 9px;
+      font-weight: 600;
+      color: #fff;
+      background: #4078c0;
+      padding: 1px 5px;
+      border-radius: 8px;
+    }
+    .pro-badge {
+      background: #daa520;
+    }
+    .section {
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: 11px;
+      font-weight: 600;
+      color: #656d76;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+    .stat {
+      display: flex;
+      justify-content: space-between;
+      padding: 6px 0;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .stat:last-child {
+      border-bottom: none;
+    }
+    .stat-label { color: #656d76; }
+    .stat-value { font-weight: 600; }
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 8px 12px;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 600;
+      border: 1px solid rgba(27,31,36,0.15);
+      border-radius: 6px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.2s;
+    }
+    .btn-primary {
+      color: #fff;
+      background: #2da44e;
+    }
+    .btn-primary:hover { background: #2c974b; }
+    .btn-secondary {
+      color: #24292f;
+      background: #f6f8fa;
+    }
+    .btn-secondary:hover { background: #eaeef2; }
+    .footer {
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 1px solid #d0d7de;
+      font-size: 11px;
+      color: #656d76;
+      display: flex;
+      justify-content: space-between;
+    }
+    .footer a {
+      color: #0969da;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .footer a:hover { text-decoration: underline; }
+    @media (prefers-color-scheme: dark) {
+      body { color: #c9d1d9; background: #0d1117; }
+      .stat { border-bottom-color: #21262d; }
+      .section-title { color: #8b949e; }
+      .btn-secondary { color: #c9d1d9; background: #21262d; }
+      .btn-secondary:hover { background: #30363d; }
+      .footer { border-top-color: #30363d; color: #8b949e; }
+      .footer a { color: #58a6ff; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>CodeLens AI</h1>
+    <span class="badge">BETA</span>
+    <span class="badge pro-badge" id="pro-badge" style="display:none">PRO</span>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Today's Usage</div>
+    <div class="stat">
+      <span class="stat-label">Analyses Used</span>
+      <span class="stat-value" id="usage-count">0 / 5</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">PRs Analyzed (Total)</span>
+      <span class="stat-value" id="total-count">0</span>
+    </div>
+  </div>
+
+  <button class="btn btn-primary" id="open-github" style="margin-bottom:8px">
+    Open Current PR
+  </button>
+  <button class="btn btn-secondary" id="open-settings">
+    Settings
+  </button>
+
+  <div class="footer">
+    <a href="#" id="upgrade-link">Upgrade to Pro</a>
+    <span>v1.0.0</span>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
