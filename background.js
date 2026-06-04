@@ -1,3 +1,8 @@
+// ExtPay - Payment integration
+importScripts('ExtPay.js');
+const extpay = ExtPay('codelens-ai');
+extpay.startBackground();
+
 // CodeLens AI - Background Service Worker
 // GitHub API + AI analysis + state management
 
@@ -52,10 +57,34 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     case 'CHECK_LIMIT':
       checkDailyLimit().then(sendResponse);
       return true;
+  case 'GET_PAID_STATUS':
+    extpay.getUser().then(sendResponse);
+    return true;
+  case 'OPEN_PAYMENT':
+    extpay.openPaymentPage();
+    sendResponse({ success: true });
+    return false;
+  case 'OPEN_LOGIN':
+    extpay.openLoginPage();
+    sendResponse({ success: true });
+    return false;
+
 
     case 'GET_SETTINGS':
       chrome.storage.sync.get('settings').then(sendResponse);
       return true;
+  case 'GET_PAID_STATUS':
+    extpay.getUser().then(sendResponse);
+    return true;
+  case 'OPEN_PAYMENT':
+    extpay.openPaymentPage();
+    sendResponse({ success: true });
+    return false;
+  case 'OPEN_LOGIN':
+    extpay.openLoginPage();
+    sendResponse({ success: true });
+    return false;
+
 
     case 'SAVE_SETTINGS':
       chrome.storage.sync.set({ settings: request.settings }).then(() =>
@@ -66,6 +95,18 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     case 'GET_ANALYSIS_HISTORY':
       chrome.storage.local.get('history').then(sendResponse);
       return true;
+  case 'GET_PAID_STATUS':
+    extpay.getUser().then(sendResponse);
+    return true;
+  case 'OPEN_PAYMENT':
+    extpay.openPaymentPage();
+    sendResponse({ success: true });
+    return false;
+  case 'OPEN_LOGIN':
+    extpay.openLoginPage();
+    sendResponse({ success: true });
+    return false;
+
   }
 });
 
