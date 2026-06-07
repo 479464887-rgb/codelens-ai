@@ -125,11 +125,11 @@
     const resultDiv = document.getElementById('codelens-result');
     if (!resultDiv) return;
 
-    // Markdown → HTML
-    let html = analysisText;
-    // Code blocks
+    // Escape all HTML first to prevent XSS, then apply markdown→HTML transformations
+    let html = escapeHtml(analysisText);
+    // Code blocks (triple-backtick)
     html = html.replace(/```(\w*)\n?([\s\S]*?)```/g, (_, lang, code) =>
-      `<pre><code class="language-${lang || 'text'}">${escapeHtml(code.trim())}</code></pre>`
+      `<pre><code class="language-${escapeHtml(lang || 'text')}">${code}</code></pre>`
     );
     // Headings
     html = html.replace(/^### (.*$)/gm, '<h5>$1</h5>');
