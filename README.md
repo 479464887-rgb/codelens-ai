@@ -1,27 +1,33 @@
-# CodeLens AI
+# CodeLens AI — Chrome Extension
 
-AI-powered code analysis for GitHub repositories
+AI-powered code analysis directly on GitHub. Analyze, explain, and review code without leaving your repository.
 
 ## Features
 
-- Works on all websites
-- Dark theme (GitHub Dark style)
-- Keyboard shortcuts support
-- Privacy-focused: data stays local
+- 🔍 **Code Analysis**: Select any code block on GitHub, get AI-powered explanation
+- 📊 **Complexity Scoring**: Automatic complexity assessment
+- 🛡️ **Security Scanning**: Identify potential security issues
+- 📝 **Code Review**: AI-assisted review suggestions
 
 ## Pricing
 
-**$19.99 lifetime** — One-time purchase, lifetime access.
-
-## Install
-
-Available on Chrome Web Store (coming soon).
+- **Free**: 10 analyses/day
+- **Pro**: $2.99/month or $19.99 lifetime — unlimited analyses + priority response
 
 ## Privacy
 
-This extension does not collect, store, or transmit any personal data.
-See [Privacy Policy](https://479464887-rgb.github.io/codelens-ai/privacy.html).
+All processing is done client-side. Code is sent to DeepSeek API for analysis only. No data is stored or logged. [Privacy Policy](https://479464887-rgb.github.io/codelens-ai/privacy.html)
 
-## License
+## Tech Stack
 
-MIT
+- Manifest V3
+- GitHub DOM API
+- DeepSeek Chat API
+- ExtPay for payments
+
+## Install
+
+1. Clone this repo
+2. Go to `chrome://extensions/`
+3. Enable "Developer mode"
+4. Click "Load unpacked" and select this folder
