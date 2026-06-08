@@ -131,15 +131,14 @@
     html = html.replace(/```(\w*)\n?([\s\S]*?)```/g, (_, lang, code) =>
       `<pre><code class="language-${escapeHtml(lang || 'text')}">${code}</code></pre>`
     );
-    // Headings
-    html = html.replace(/^### (.*$)/gm, '<h5>$1</h5>');
-    html = html.replace(/^## (.*$)/gm, '<h4>$1</h4>');
-    // Bold
-    html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-    // List items
-    html = html.replace(/^- (.*)/gm, '<li>$1</li>');
+    html = html.replace(/^- (.*)/gm, (_, text) => `<li>${escapeHtml(text)}</li>`);
     // Inline code
-    html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
+    html = html.replace(/`([^`]+)`/g, (_, code) => `<code>${escapeHtml(code)}</code>`);
+    // Headings
+    html = html.replace(/^### (.*$)/gm, (_, text) => `<h5>${escapeHtml(text)}</h5>`);
+    html = html.replace(/^## (.*$)/gm, (_, text) => `<h4>${escapeHtml(text)}</h4>`);
+    // Bold
+    html = html.replace(/\*\*(.*?)\*\*/g, (_, text) => `<strong>${escapeHtml(text)}</strong>`);
     // Paragraphs
     html = html.replace(/\n\n/g, '<br><br>');
 
