@@ -1,3 +1,11 @@
+// ExtPay initialization
+try {
+  const extpay = ExtPay('codelens-ai');
+  extpay.startBackground();
+} catch(e) {
+  console.error('codelens-ai: ExtPay init failed', e);
+}
+
 // CodeLens AI — GitHub code analysis
 chrome.runtime.onInstalled.addListener(() => console.log('CodeLens AI ready'));
 
